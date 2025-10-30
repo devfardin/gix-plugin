@@ -3,7 +3,7 @@
  * Plugin Name: GIX Plugin
  * Plugin URI: https://example.com/gix-plugin
  * Description: A simple WordPress plugin.
- * Version: 1.0.0
+ * Version: 1.1.1
  * Author: Fardin Ahmed
  * Author URI: https://example.com
  * Text Domain: gix-plugin
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 if (defined('GIX_PLUGIN_VERSION')) {
-    define('GIX_PLUGIN_VERSION', '1.0.0');
+    define('GIX_PLUGIN_VERSION', '1.1.0');
 }
 
 if (!defined('GIX_PLUGIN_DIR_PATH')) {
@@ -26,6 +26,9 @@ if (!defined('GIX_PLUGIN_DIR_PATH')) {
 if (!defined('GIX_PLUGIN_DIR_URL')) {
     define('GIX_PLUGIN_DIR_URL', plugin_dir_url(__FILE__));
 }
+if (!defined('GIX_PLUGIN_DB_VERSION')) {
+    define('GIX_PLUGIN_DB_VERSION', '1.5.1');
+}
 
 class Gix_plugin
 {
@@ -33,8 +36,11 @@ class Gix_plugin
     {
         add_action('admin_enqueue_scripts', [$this, 'gix_plugin_admin_scripts']);
         add_action('wp_enqueue_scripts', [$this, 'gix_plugin_public_scripts']);
+        register_activation_hook(__FILE__, [$this, 'gix_plugin_activate']);
         $this->load_depandancy();
         $this->initialize();
+
+        
     }
     public function gix_plugin_admin_scripts()
     {
@@ -47,17 +53,25 @@ class Gix_plugin
     }
     public function load_depandancy()
     {
-        include_once( GIX_PLUGIN_DIR_PATH . 'custom_settings_page.php');
         include_once( GIX_PLUGIN_DIR_PATH . 'class-admin-menu.php');
         include_once( GIX_PLUGIN_DIR_PATH . 'class-settings-page.php');
         include_once( GIX_PLUGIN_DIR_PATH . 'class-shortcode.php');
+        include_once( GIX_PLUGIN_DIR_PATH . 'class-shortcode.php');  
+
     }
     public function initialize()
     {
         new CLASS_ADMIN_MENU();
-        // new ADD_CUSTOM_ADMIN_SETTINGS();
         new SETTINGS_PAGE();
         new GIX_PLUGIN_SHORTCODE();
+      
+    }
+    public function gix_plugin_activate() {
+        include_once( GIX_PLUGIN_DIR_PATH . 'class-db.php');
+        $db = new DB();
+        $db->gix_reactions_table();
+        // $db->update_action();
+        // new DB();
     }
 
 
