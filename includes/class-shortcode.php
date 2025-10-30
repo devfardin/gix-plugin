@@ -11,7 +11,6 @@ class GIX_PLUGIN_SHORTCODE
         ob_start();
         $message = get_option('admin_settings');
         $enable_desible = get_option('admin_settings');
-
         if ($enable_desible['admin_settings_filed_enable_desible'] == 'Yes') {
             ?>
             <div class="shortcode-success-alert">
