@@ -40,11 +40,8 @@ class DB
         $installed_ver = get_option('gix_db_version');
         $current_version = GIX_PLUGIN_DB_VERSION;
 
-
         if( $installed_ver != $current_version ) {
-
              $table_name = $wpdb->prefix . 'post_votes';
-
         $sql = "CREATE TABLE IF NOT EXISTS $table_name (
             `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
             `post_id` BIGINT(20) UNSIGNED NOT NULL,
@@ -68,7 +65,7 @@ class DB
         }
     }
     public function gix_plugin_update_db_check() {
-         $installed_ver = get_option('gix_db_version');
+        $installed_ver = get_option('gix_db_version');
         $current_version = GIX_PLUGIN_DB_VERSION;
 
         if( $installed_ver != $$current_version) {
