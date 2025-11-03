@@ -40,23 +40,33 @@ class Gix_plugin
         $this->load_depandancy();
         $this->initialize();
 
-        
+
     }
     public function gix_plugin_admin_scripts()
     {
         wp_enqueue_style('gix_plugin_admin_style', GIX_PLUGIN_DIR_URL . 'admin/css/admin.css', [], time(), 'all');
         wp_enqueue_script('gix_plugin_admin_js', GIX_PLUGIN_DIR_URL . 'admin/js/admin.js', [], time(), true);
     }
-    public function gix_plugin_public_scripts() {
+    public function gix_plugin_public_scripts()
+    {
         wp_enqueue_style('gix_plugin_public_style', GIX_PLUGIN_DIR_URL . 'public/css/public.css', [], time(), 'all');
         wp_enqueue_script('gix_plugin_public_js', GIX_PLUGIN_DIR_URL . 'public/js/public.js', [], time(), true);
+        wp_enqueue_script('button_ajax', GIX_PLUGIN_DIR_URL . 'public/js/ajax.js', ['jquery'], time(), true);
+
+        wp_localize_script('button_ajax', 'siteinfo', [
+            'admin_url' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('crate_nonce'),
+        ]);
     }
     public function load_depandancy()
     {
-        include_once( GIX_PLUGIN_DIR_PATH . 'class-admin-menu.php');
-        include_once( GIX_PLUGIN_DIR_PATH . 'class-settings-page.php');
-        include_once( GIX_PLUGIN_DIR_PATH . 'class-shortcode.php');
-        include_once( GIX_PLUGIN_DIR_PATH . 'class-shortcode.php');  
+        include_once(GIX_PLUGIN_DIR_PATH . 'class-admin-menu.php');
+        include_once(GIX_PLUGIN_DIR_PATH . 'class-settings-page.php');
+        include_once(GIX_PLUGIN_DIR_PATH . 'class-shortcode.php');
+        include_once(GIX_PLUGIN_DIR_PATH . 'class-shortcode.php');
+        include_once(GIX_PLUGIN_DIR_PATH . 'class-ajax.php');
+        include_once(GIX_PLUGIN_DIR_PATH . 'class-user-ip.php');
+        include_once(GIX_PLUGIN_DIR_PATH . 'class-voting.php');
 
     }
     public function initialize()
@@ -64,10 +74,13 @@ class Gix_plugin
         new CLASS_ADMIN_MENU();
         new SETTINGS_PAGE();
         new GIX_PLUGIN_SHORTCODE();
-      
+        new CLASS_AJAX_BUTTON();
+        new VOTING();
+
     }
-    public function gix_plugin_activate() {
-        include_once( GIX_PLUGIN_DIR_PATH . 'class-db.php');
+    public function gix_plugin_activate()
+    {
+        include_once(GIX_PLUGIN_DIR_PATH . 'class-db.php');
         $db = new DB();
         $db->gix_reactions_table();
         // $db->update_action();
