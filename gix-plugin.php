@@ -67,6 +67,7 @@ class Gix_plugin
         include_once(GIX_PLUGIN_DIR_PATH . 'class-ajax.php');
         include_once(GIX_PLUGIN_DIR_PATH . 'class-user-ip.php');
         include_once(GIX_PLUGIN_DIR_PATH . 'class-voting.php');
+        include_once(GIX_PLUGIN_DIR_PATH . 'class-external-api.php');
 
     }
     public function initialize()
@@ -76,6 +77,7 @@ class Gix_plugin
         new GIX_PLUGIN_SHORTCODE();
         new CLASS_AJAX_BUTTON();
         new VOTING();
+        new EXTERNAL_API();
 
     }
     public function gix_plugin_activate()
@@ -83,8 +85,6 @@ class Gix_plugin
         include_once(GIX_PLUGIN_DIR_PATH . 'class-db.php');
         $db = new DB();
         $db->gix_reactions_table();
-        // $db->update_action();
-        // new DB();
     }
 
 
