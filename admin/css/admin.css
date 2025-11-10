@@ -1,0 +1,380 @@
+/* GIX Plugin Admin Styles */
+.gix-admin-wrapper {
+    margin: 20px 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Header Styles */
+.gix-admin-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.gix-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+}
+
+.gix-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.gix-logo .dashicons {
+    font-size: 32px;
+    background: rgba(255,255,255,0.2);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.gix-logo h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.version-badge {
+    background: rgba(255,255,255,0.2);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Content Layout */
+.gix-admin-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-top: 0;
+}
+
+/* Settings Card */
+.gix-settings-card {
+    background: white;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.gix-card-header {
+    background: #f8f9fa;
+    padding: 25px 30px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.gix-card-header h2 {
+    margin: 0 0 8px 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.gix-card-header p {
+    margin: 0;
+    color: #6c757d;
+    font-size: 14px;
+}
+
+/* Form Styles */
+.gix-settings-form {
+    padding: 30px;
+}
+
+.gix-section-intro {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #e3f2fd;
+    border-left: 4px solid #2196f3;
+    border-radius: 4px;
+}
+
+.gix-section-description {
+    margin: 0;
+    color: #1565c0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Field Wrapper */
+.gix-field-wrapper {
+    margin-bottom: 30px;
+}
+
+.gix-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.gix-field-label {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+
+.gix-field-label .dashicons {
+    color: #667eea;
+    font-size: 16px;
+}
+
+.gix-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Text Input */
+.gix-text-input {
+    padding: 12px 16px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: white;
+    width: 100%;
+    max-width: 400px;
+}
+
+.gix-text-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Toggle Switch */
+.gix-toggle-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.gix-toggle-switch {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.gix-toggle-input {
+    display: none;
+}
+
+.gix-toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.gix-toggle-slider {
+    position: relative;
+    width: 50px;
+    height: 24px;
+    background: #ccc;
+    border-radius: 24px;
+    transition: all 0.3s ease;
+}
+
+.gix-toggle-slider::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.gix-toggle-input:checked + .gix-toggle-label .gix-toggle-slider {
+    background: #667eea;
+}
+
+.gix-toggle-input:checked + .gix-toggle-label .gix-toggle-slider::before {
+    transform: translateX(26px);
+}
+
+.gix-toggle-text {
+    font-weight: 500;
+    color: #2c3e50;
+    min-width: 60px;
+}
+
+/* Field Description */
+.gix-field-description {
+    font-size: 12px;
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Form Actions */
+.gix-form-actions {
+    display: flex;
+    gap: 15px;
+    padding-top: 20px;
+    border-top: 1px solid #e9ecef;
+    margin-top: 30px;
+}
+
+.gix-save-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.gix-save-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.gix-reset-btn {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.gix-reset-btn:hover {
+    background: #5a6268;
+    transform: translateY(-1px);
+}
+
+/* Info Sidebar */
+.gix-info-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.gix-info-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border-left: 4px solid #667eea;
+}
+
+.gix-info-card h3 {
+    margin: 0 0 15px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gix-info-card .dashicons {
+    color: #667eea;
+}
+
+.gix-info-card ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.gix-info-card li {
+    margin-bottom: 8px;
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.gix-info-card p {
+    margin: 0 0 15px 0;
+    color: #6c757d;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Success Messages */
+.notice.updated {
+    border-left-color: #00d084;
+    background: #f0f9ff;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .gix-admin-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .gix-header-content {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .gix-admin-wrapper {
+        margin: 10px;
+    }
+    
+    .gix-admin-header {
+        padding: 20px;
+    }
+    
+    .gix-logo h1 {
+        font-size: 24px;
+    }
+    
+    .gix-settings-form {
+        padding: 20px;
+    }
+    
+    .gix-form-actions {
+        flex-direction: column;
+    }
+    
+    .gix-text-input {
+        max-width: 100%;
+    }
+}
+
+/* Animation for smooth transitions */
+.gix-field-wrapper {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Focus states for accessibility */
+.gix-toggle-label:focus-within .gix-toggle-slider {
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}
+
+button:focus,
+.button:focus {
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}

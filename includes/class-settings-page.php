@@ -41,45 +41,68 @@ class SETTINGS_PAGE
 
         );
     }
-    // Section Meassage or style
-    public function admin_settings_message($attgs)
+    // Section Message or style
+    public function admin_settings_message($args)
     {
-        echo '<h2> Here is my custom Message </h2>';
+        echo '<div class="gix-section-intro">';
+        echo '<p class="gix-section-description">Configure your plugin settings using the options below. All changes will take effect immediately after saving.</p>';
+        echo '</div>';
     }
 
     public function admin_filed_shortcode($args)
     {
         $options = get_option('admin_settings');
-        // Define the field name (as used when registering the setting)
-        $field_id = $args['label_for']; // or whatever key you used (e.g., 'shortcode_text')
-
-        // Get current or default value
-        $value = isset($options[$field_id]) ? esc_attr($options[$field_id]) : 'Default shortcode message'; ?>
-        <div class="form_wrapper">
-            <div>
-                <label for="<?php echo esc_attr($field_id); ?>">Put your shortcode message</label>
-                <input type="text" id="<?php echo esc_attr($field_id); ?>"
-                    name="admin_settings[<?php echo esc_attr($field_id); ?>]" value="<?php echo $value; ?>"
-                    placeholder="Enter your shortcode text" />
+        $field_id = $args['label_for'];
+        $value = isset($options[$field_id]) ? esc_attr($options[$field_id]) : 'Default shortcode message';
+        ?>
+        <div class="gix-field-wrapper">
+            <div class="gix-field-group">
+                <label for="<?php echo esc_attr($field_id); ?>" class="gix-field-label">
+                    <span class="dashicons dashicons-editor-code"></span>
+                    Shortcode Message
+                </label>
+                <div class="gix-input-wrapper">
+                    <input type="text" 
+                           id="<?php echo esc_attr($field_id); ?>"
+                           name="admin_settings[<?php echo esc_attr($field_id); ?>]" 
+                           value="<?php echo $value; ?>"
+                           placeholder="Enter your shortcode display message"
+                           class="gix-text-input" />
+                    <span class="gix-field-description">This message will be displayed when the shortcode is used</span>
+                </div>
             </div>
-
         </div>
-
-    <?php }
+        <?php
+    }
     public function admin_filed_enable_desible($args)
     {
         $options = get_option('admin_settings');
-        // Define the field name (as used when registering the setting)
         $field_id = $args['enable_for'];
+        $current_value = isset($options[$field_id]) ? $options[$field_id] : 'Yes';
         ?>
-        <div>
-            <label for="<?php echo esc_attr($field_id); ?>"> Short Code Enable or Desible </label>
-            <select name="admin_settings[<?php echo esc_attr($field_id) ?>]" id="">
-                <option value="Yes" <?php echo isset($options[$field_id]) ? (selected($options[$field_id], 'Yes', false)) : '' ?>>
-                    Yes
-                </option>
-                <option value="No" <?php echo isset($options[$field_id]) ? (selected($options[$field_id], 'No', false)) : '' ?>>No</option>
-            </select>
+        <div class="gix-field-wrapper">
+            <div class="gix-field-group">
+                <label for="<?php echo esc_attr($field_id); ?>" class="gix-field-label">
+                    <span class="dashicons dashicons-admin-plugins"></span>
+                    Plugin Status
+                </label>
+                <div class="gix-toggle-wrapper">
+                    <div class="gix-toggle-switch">
+                        <input type="hidden" name="admin_settings[<?php echo esc_attr($field_id); ?>]" value="No">
+                        <input type="checkbox" 
+                               id="<?php echo esc_attr($field_id); ?>"
+                               name="admin_settings[<?php echo esc_attr($field_id); ?>]" 
+                               value="Yes"
+                               class="gix-toggle-input"
+                               <?php checked($current_value, 'Yes'); ?>>
+                        <label for="<?php echo esc_attr($field_id); ?>" class="gix-toggle-label">
+                            <span class="gix-toggle-slider"></span>
+                            <span class="gix-toggle-text"><?php echo $current_value === 'Yes' ? 'Enabled' : 'Disabled'; ?></span>
+                        </label>
+                    </div>
+                    <span class="gix-field-description">Enable or disable the shortcode functionality</span>
+                </div>
+            </div>
         </div>
         <?php
     }
