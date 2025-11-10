@@ -68,6 +68,7 @@ class Gix_plugin
         include_once(GIX_PLUGIN_DIR_PATH . 'class-user-ip.php');
         include_once(GIX_PLUGIN_DIR_PATH . 'class-voting.php');
         include_once(GIX_PLUGIN_DIR_PATH . 'class-external-api.php');
+        include_once(GIX_PLUGIN_DIR_PATH . 'class-rapid-api.php');
 
     }
     public function initialize()
@@ -78,6 +79,7 @@ class Gix_plugin
         new CLASS_AJAX_BUTTON();
         new VOTING();
         new EXTERNAL_API();
+        new RAPID_API();
 
     }
     public function gix_plugin_activate()

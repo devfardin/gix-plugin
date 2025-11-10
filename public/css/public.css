@@ -24,6 +24,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -35,10 +36,11 @@
     opacity: 1;
     transform: translateY(-10px);
   }
-  
+
 }
 
-.disline-btn, .clean-btn {
+.disline-btn,
+.clean-btn {
   padding: 20px 30px;
   margin: 15px;
   background: #2563eb;
@@ -47,12 +49,110 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   font-size: 18px;
   font-weight: 600;
 }
-.disline-btn, .clean-btn:hover {
+
+.disline-btn,
+.clean-btn:hover {
   background: #1d4ed8;
-  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Repid API style */
+
+.news-card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 15px;
+  margin-top: 40px !important;
+}
+
+.news-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 700px;
+  margin: 20px auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.news-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.news-content {
+  padding: 20px;
+}
+
+.news-title a {
+  color: #111;
+  text-decoration: none;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  transition: color 0.3s;
+}
+
+.news-title a:hover {
+  color: #0077ff;
+}
+
+.news-snippet {
+  color: #555;
+  font-size: 1rem;
+  margin: 12px 0 16px;
+  line-height: 1.6;
+}
+
+.news-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.author-info img {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+}
+
+.news-date {
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .news-card {
+    margin: 15px;
+  }
+
+  .news-title a {
+    font-size: 1.2rem;
+  }
+
+  .news-snippet {
+    font-size: 0.95rem;
+  }
 }
